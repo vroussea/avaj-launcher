@@ -4,6 +4,9 @@ import exception.IllegalCoordinatesException;
 import exception.IllegalTypeArgument;
 
 public class AircraftFactory {
+
+    private final int MAXHEIGHT = 100;
+
     public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) {
         switch (type) {
             case "helicopter":
@@ -38,6 +41,15 @@ public class AircraftFactory {
         if (longitude < 0 || latitude < 0 || height < 0)
             throw  new IllegalCoordinatesException();
 
-        return null;//new Baloon(name, longitude, latitude, height > 100 ? 100 : height);
+        return new Baloon(name, CoordinatesBuilder
+                        .aCoordinates()
+                        .withLongitude(longitude)
+                        .withLatitude(latitude)
+                        .withHeight(setHeight(height))
+                        .build());
+    }
+
+    private int setHeight(int height) {
+        return height > MAXHEIGHT ? MAXHEIGHT : height;
     }
 }

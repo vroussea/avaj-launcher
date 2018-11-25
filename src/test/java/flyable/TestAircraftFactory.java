@@ -1,13 +1,20 @@
-package aircraft;
+package flyable;
 
 import exception.IllegalCoordinatesException;
 import exception.IllegalTypeArgument;
-import flyable.AircraftFactory;
-import flyable.Flyable;
+import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
+
 public class TestAircraftFactory {
+
     private AircraftFactory aircraftFactory;
+
+    @Before
+    public void before() {
+        aircraftFactory = new AircraftFactory();
+    }
 
     @Test(expected = IllegalTypeArgument.class)
     public void testWrongAircraftType() {
@@ -39,25 +46,13 @@ public class TestAircraftFactory {
                 1);
     }
 
-    @Test(expected = IllegalCoordinatesException.class)
     public void testHeightTooHigh() {
-        aircraftFactory.newAircraft(
+        Flyable aicraft = aircraftFactory.newAircraft(
                 "baloon",
                 "test",
                 1,
                 1,
                 101);
-    }
-
-
-    @Test
-    public void testAircraftCreated() {
-        Flyable newAircraft = aircraftFactory.newAircraft(
-                "wrongType",
-                "test",
-                1,
-                1,
-                1);
-        assert(newAircraft.toString().equals("test"));
+        assertFalse(aicraft.toString().contains("101"));
     }
 }
