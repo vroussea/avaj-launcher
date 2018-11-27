@@ -5,8 +5,6 @@ import exception.IllegalTypeArgument;
 
 public class AircraftFactory {
 
-    private final int MAXHEIGHT = 100;
-
     public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) {
         switch (type) {
             case "helicopter":
@@ -25,21 +23,31 @@ public class AircraftFactory {
 
     private Flyable newHelicopter(String name, int longitude, int latitude, int height) {
         if (longitude < 0 || latitude < 0 || height < 0)
-            throw  new IllegalCoordinatesException();
+            throw new IllegalCoordinatesException();
 
-        return null;//new Helicopter(name, longitude, latitude, height > 100 ? 100 : height);
+        return new Helicopter(name, CoordinatesBuilder
+                .aCoordinates()
+                .withLongitude(longitude)
+                .withLatitude(latitude)
+                .withHeight(setHeight(height))
+                .build());
     }
 
     private Flyable newJetPlane(String name, int longitude, int latitude, int height) {
         if (longitude < 0 || latitude < 0 || height < 0)
-            throw  new IllegalCoordinatesException();
+            throw new IllegalCoordinatesException();
 
-        return null;//new JetPlane(name, longitude, latitude, height > 100 ? 100 : height);
+        return new JetPlane(name, CoordinatesBuilder
+                .aCoordinates()
+                .withLongitude(longitude)
+                .withLatitude(latitude)
+                .withHeight(setHeight(height))
+                .build());
     }
 
     private Flyable newBaloon(String name, int longitude, int latitude, int height) {
         if (longitude < 0 || latitude < 0 || height < 0)
-            throw  new IllegalCoordinatesException();
+            throw new IllegalCoordinatesException();
 
         return new Baloon(name, CoordinatesBuilder
                         .aCoordinates()
@@ -50,6 +58,7 @@ public class AircraftFactory {
     }
 
     private int setHeight(int height) {
-        return height > MAXHEIGHT ? MAXHEIGHT : height;
+        final int MAX_HEIGHT = 100;
+        return height > MAX_HEIGHT ? MAX_HEIGHT : height;
     }
 }

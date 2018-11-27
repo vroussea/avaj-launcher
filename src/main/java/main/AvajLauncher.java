@@ -1,7 +1,5 @@
 package main;
 
-import test.Test;
-
 public class AvajLauncher {
 
     public static void main(final String[] args) {
@@ -9,6 +7,5 @@ public class AvajLauncher {
             System.out.println(args[0]);
         else
             System.out.println("Hello World!");
-        Test.test();
     }
 }

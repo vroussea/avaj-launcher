@@ -8,26 +8,26 @@ public final class CoordinatesBuilder {
     private CoordinatesBuilder() {
     }
 
-    static CoordinatesBuilder aCoordinates() {
+    public static CoordinatesBuilder aCoordinates() {
         return new CoordinatesBuilder();
     }
 
-    CoordinatesBuilder withLongitude(int longitude) {
+    public CoordinatesBuilder withLongitude(int longitude) {
         this.longitude = longitude;
         return this;
     }
 
-    CoordinatesBuilder withLatitude(int latitude) {
+    public CoordinatesBuilder withLatitude(int latitude) {
         this.latitude = latitude;
         return this;
     }
 
-    CoordinatesBuilder withHeight(int height) {
+    public CoordinatesBuilder withHeight(int height) {
         this.height = height;
         return this;
     }
 
-    Coordinates build() {
+    public Coordinates build() {
         return new Coordinates(longitude, latitude, height);
     }
 }
