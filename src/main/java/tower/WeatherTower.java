@@ -24,6 +24,6 @@ public class WeatherTower extends Tower {
     }
 
     void changeWeather() {
-        weatherProvider.restartSimulation();
+        super.conditionsChanged();
     }
 }

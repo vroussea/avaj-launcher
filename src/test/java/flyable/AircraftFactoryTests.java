@@ -2,23 +2,16 @@ package flyable;
 
 import exception.IllegalCoordinatesException;
 import exception.IllegalTypeArgumentException;
-import org.junit.Before;
 import org.junit.Test;
 
+import static flyable.AircraftFactory.newAircraft;
 import static org.junit.Assert.*;
 
 public class AircraftFactoryTests {
 
-    private AircraftFactory aircraftFactory;
-
-    @Before
-    public void before() {
-        aircraftFactory = new AircraftFactory();
-    }
-
     @Test(expected = IllegalTypeArgumentException.class)
     public void testWrongAircraftType() {
-        aircraftFactory.newAircraft(
+        newAircraft(
                 "wrongType",
                 "test",
                 1,
@@ -28,7 +21,7 @@ public class AircraftFactoryTests {
 
     @Test(expected = IllegalCoordinatesException.class)
     public void testWrongLongitude() {
-        aircraftFactory.newAircraft(
+        newAircraft(
                 "baloon",
                 "test",
                 -1,
@@ -38,7 +31,7 @@ public class AircraftFactoryTests {
 
     @Test(expected = IllegalCoordinatesException.class)
     public void testWrongLatitude() {
-        aircraftFactory.newAircraft(
+        newAircraft(
                 "jetPlane",
                 "test",
                 1,
@@ -48,7 +41,7 @@ public class AircraftFactoryTests {
 
     @Test(expected = IllegalCoordinatesException.class)
     public void testWrongHeight() {
-        aircraftFactory.newAircraft(
+        newAircraft(
                 "helicopter",
                 "test",
                 1,
@@ -58,7 +51,7 @@ public class AircraftFactoryTests {
 
     @Test
     public void testHeightTooHigh() {
-        Flyable aircraft = aircraftFactory.newAircraft(
+        Flyable aircraft = newAircraft(
                 "helicopter",
                 "test",
                 1,
@@ -69,7 +62,7 @@ public class AircraftFactoryTests {
 
     @Test
     public void testBaloonIsCreated() {
-        Flyable aircraft = aircraftFactory.newAircraft(
+        Flyable aircraft = newAircraft(
                 "baloon",
                 "test",
                 1,
@@ -80,7 +73,7 @@ public class AircraftFactoryTests {
 
     @Test
     public void testHelicopterIsCreated() {
-        Flyable aircraft = aircraftFactory.newAircraft(
+        Flyable aircraft = newAircraft(
                 "helicopter",
                 "test",
                 1,
@@ -91,7 +84,7 @@ public class AircraftFactoryTests {
 
     @Test
     public void testJetPlaneIsCreated() {
-        Flyable aircraft = aircraftFactory.newAircraft(
+        Flyable aircraft = newAircraft(
                 "jetPlane",
                 "test",
                 1,
@@ -102,7 +95,7 @@ public class AircraftFactoryTests {
 
     @Test
     public void testJetPlaneToString() {
-        Flyable aircraft = aircraftFactory.newAircraft(
+        Flyable aircraft = newAircraft(
                 "jetPlane",
                 "test",
                 1,
@@ -113,7 +106,7 @@ public class AircraftFactoryTests {
 
     @Test
     public void testHelicopterToString() {
-        Flyable aircraft = aircraftFactory.newAircraft(
+        Flyable aircraft = newAircraft(
                 "helicopter",
                 "test",
                 1,
@@ -124,7 +117,7 @@ public class AircraftFactoryTests {
 
     @Test
     public void testBaloonToString() {
-        Flyable aircraft = aircraftFactory.newAircraft(
+        Flyable aircraft = newAircraft(
                 "baloon",
                 "test",
                 1,

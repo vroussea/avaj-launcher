@@ -1,6 +1,7 @@
 package tower;
 
 import exception.AlreadyRegisteredObserverException;
+import exception.NoWeatherTowerSpecifiedException;
 import exception.NotRegisteredObserverException;
 import flyable.Flyable;
 
@@ -17,17 +18,15 @@ public class Tower {
     }
 
     public void unregister(Flyable flyable) {
-        if (!observers.contains(flyable))
+        if (!observers.remove(flyable))
             throw new NotRegisteredObserverException();
-
-        observers.remove(flyable);
     }
 
     protected void conditionsChanged() {
         for (Flyable flyable : observers) {
             try {
                 flyable.updateConditions();
-            } catch (NotRegisteredObserverException e) {
+            } catch (NoWeatherTowerSpecifiedException e) {
                 e.printStackTrace();
             }
         }

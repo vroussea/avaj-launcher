@@ -2,28 +2,25 @@ package tower;
 
 import exception.AlreadyRegisteredObserverException;
 import exception.NotRegisteredObserverException;
-import flyable.AircraftFactory;
 import flyable.Flyable;
 import org.junit.Before;
 import org.junit.Test;
 
+import static flyable.AircraftFactory.newAircraft;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class TowerObserversTests {
-    private AircraftFactory aircraftFactory;
     private Tower tower;
 
     @Before
     public void init() {
-        aircraftFactory = new AircraftFactory();
         tower = new Tower();
     }
 
     @Test
     public void testRegisterFlyable() {
-        Flyable flyable = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
 
         tower.register(flyable);
         assertEquals(tower.getObservers().size(), 1);
@@ -31,9 +28,9 @@ public class TowerObserversTests {
 
     @Test
     public void testRegisterMultipleFlyable() {
-        Flyable flyable1 = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
-        Flyable flyable2 = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
-        Flyable flyable3 = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable1 = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable2 = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable3 = newAircraft("jetPlane", "test", 1, 1, 1);
 
         tower.register(flyable1);
         tower.register(flyable2);
@@ -43,7 +40,7 @@ public class TowerObserversTests {
 
     @Test
     public void testUnregisterFlyable() {
-        Flyable flyable = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
 
         tower.register(flyable);
         tower.unregister(flyable);
@@ -52,15 +49,15 @@ public class TowerObserversTests {
 
     @Test(expected = NotRegisteredObserverException.class)
     public void testUnregisterWhenNoFlyable() {
-        Flyable flyable = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
 
         tower.unregister(flyable);
     }
 
     @Test(expected = NotRegisteredObserverException.class)
     public void testUnregisterWrongFlyable() {
-        Flyable flyable1 = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
-        Flyable flyable2 = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable1 = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable2 = newAircraft("jetPlane", "test", 1, 1, 1);
 
         tower.register(flyable1);
         tower.unregister(flyable2);
@@ -68,7 +65,7 @@ public class TowerObserversTests {
 
     @Test(expected = AlreadyRegisteredObserverException.class)
     public void testRegisterFlyableAlreadyRegistered() {
-        Flyable flyable = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
 
         tower.register(flyable);
         tower.register(flyable);
@@ -76,7 +73,7 @@ public class TowerObserversTests {
 
     @Test
     public void testObserverUpdated() {
-        Flyable flyable = aircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = mock(Flyable.class);
 
         tower.register(flyable);
 
