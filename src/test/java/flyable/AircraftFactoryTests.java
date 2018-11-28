@@ -1,7 +1,7 @@
 package flyable;
 
 import exception.IllegalCoordinatesException;
-import exception.IllegalTypeArgument;
+import exception.IllegalTypeArgumentException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class AircraftFactoryTests {
         aircraftFactory = new AircraftFactory();
     }
 
-    @Test(expected = IllegalTypeArgument.class)
+    @Test(expected = IllegalTypeArgumentException.class)
     public void testWrongAircraftType() {
         aircraftFactory.newAircraft(
                 "wrongType",

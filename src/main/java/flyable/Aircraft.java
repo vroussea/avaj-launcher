@@ -1,7 +1,5 @@
 package flyable;
 
-import exception.IllegalCoordinatesException;
-
 public class Aircraft {
 	protected long          id;
 	protected String        name;

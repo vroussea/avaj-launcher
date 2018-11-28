@@ -1,7 +1,7 @@
 package flyable;
 
 import exception.IllegalCoordinatesException;
-import exception.IllegalTypeArgument;
+import exception.IllegalTypeArgumentException;
 
 public class AircraftFactory {
 
@@ -17,7 +17,7 @@ public class AircraftFactory {
                 return newBaloon(name, longitude, latitude, height);
 
             default:
-                throw new IllegalTypeArgument();
+                throw new IllegalTypeArgumentException();
         }
     }
 
