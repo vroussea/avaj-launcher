@@ -1,6 +1,7 @@
 package tower;
 
 import exception.AlreadyRegisteredObserverException;
+import exception.NoWeatherTowerSpecifiedException;
 import exception.NotRegisteredObserverException;
 import flyable.Flyable;
 import org.junit.Before;
@@ -80,5 +81,32 @@ public class TowerObserversTests {
         tower.conditionsChanged();
 
         verify(flyable, times(1)).updateConditions();
+    }
+
+    @Test(expected = NoWeatherTowerSpecifiedException.class)
+    public void testWrongTypeOfTowerWithJetPlane() {
+        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
+
+        tower.register(flyable);
+
+        tower.conditionsChanged();
+    }
+
+    @Test(expected = NoWeatherTowerSpecifiedException.class)
+    public void testWrongTypeOfTowerWithHelicopter() {
+        Flyable flyable = newAircraft("helicopter", "test", 1, 1, 1);
+
+        tower.register(flyable);
+
+        tower.conditionsChanged();
+    }
+
+    @Test(expected = NoWeatherTowerSpecifiedException.class)
+    public void testWrongTypeOfTowerWithBaloon() {
+        Flyable flyable = newAircraft("baloon", "test", 1, 1, 1);
+
+        tower.register(flyable);
+
+        tower.conditionsChanged();
     }
 }

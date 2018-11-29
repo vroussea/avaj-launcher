@@ -6,9 +6,11 @@ import exception.NotRegisteredObserverException;
 import flyable.Flyable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Tower {
-    private final ArrayList<Flyable> observers = new ArrayList<>();
+    private final CopyOnWriteArrayList<Flyable> observers = new CopyOnWriteArrayList<>();
 
     public void register(Flyable flyable) {
         if (observers.contains(flyable))
@@ -24,15 +26,11 @@ public class Tower {
 
     protected void conditionsChanged() {
         for (Flyable flyable : observers) {
-            try {
-                flyable.updateConditions();
-            } catch (NoWeatherTowerSpecifiedException e) {
-                e.printStackTrace();
-            }
+            flyable.updateConditions();
         }
     }
 
-    public ArrayList<Flyable> getObservers() {
-        return (ArrayList<Flyable>) observers.clone();
+    public CopyOnWriteArrayList<Flyable> getObservers() {
+        return (CopyOnWriteArrayList<Flyable>) observers.clone();
     }
 }
