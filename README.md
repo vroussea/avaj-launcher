@@ -1,5 +1,6 @@
 # avaj-launcher
-###42 java project
+42 java project
+
 Use an IDE to build the project, or use compile.sh by doing `sh compile.sh`, you can add arguments to the bash file.
 
 Arguments must be .txt files containing scenario as seen in `scenario/scenario.txt`.
