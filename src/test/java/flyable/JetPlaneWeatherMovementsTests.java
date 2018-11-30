@@ -8,7 +8,6 @@ import tower.WeatherTower;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -43,7 +42,7 @@ public class JetPlaneWeatherMovementsTests {
     @Test
     public void testSunMovement() {
 
-        Flyable jetPlane = AircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable jetPlane = AircraftFactory.newAircraft("jetplane", "test", 1, 1, 1);
 
         when(weatherTower.getWeather(any())).thenReturn("SUN");
         jetPlane.registerTower(weatherTower);
@@ -55,7 +54,7 @@ public class JetPlaneWeatherMovementsTests {
     @Test
     public void testRainMovement() {
 
-        Flyable jetPlane = AircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable jetPlane = AircraftFactory.newAircraft("jetplane", "test", 1, 1, 1);
 
         when(weatherTower.getWeather(any())).thenReturn("RAIN");
         jetPlane.registerTower(weatherTower);
@@ -67,7 +66,7 @@ public class JetPlaneWeatherMovementsTests {
     @Test
     public void testFogMovement() {
 
-        Flyable jetPlane = AircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable jetPlane = AircraftFactory.newAircraft("jetplane", "test", 1, 1, 1);
 
         when(weatherTower.getWeather(any())).thenReturn("FOG");
         jetPlane.registerTower(weatherTower);
@@ -79,7 +78,7 @@ public class JetPlaneWeatherMovementsTests {
     @Test
     public void testSnowMovement() {
 
-        Flyable jetPlane = AircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable jetPlane = AircraftFactory.newAircraft("jetplane", "test", 1, 1, 1);
 
         when(weatherTower.getWeather(any())).thenReturn("SNOW");
         jetPlane.registerTower(weatherTower);
@@ -91,7 +90,7 @@ public class JetPlaneWeatherMovementsTests {
     @Test
     public void testSunDialog() {
 
-        Flyable jetPlane = AircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable jetPlane = AircraftFactory.newAircraft("jetplane", "test", 1, 1, 1);
 
         when(weatherTower.getWeather(any())).thenReturn("SUN");
         jetPlane.registerTower(weatherTower);
@@ -103,7 +102,7 @@ public class JetPlaneWeatherMovementsTests {
     @Test
     public void testRainDialog() {
 
-        Flyable jetPlane = AircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable jetPlane = AircraftFactory.newAircraft("jetplane", "test", 1, 1, 1);
 
         when(weatherTower.getWeather(any())).thenReturn("RAIN");
         jetPlane.registerTower(weatherTower);
@@ -115,7 +114,7 @@ public class JetPlaneWeatherMovementsTests {
     @Test
     public void testFogDialog() {
 
-        Flyable jetPlane = AircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable jetPlane = AircraftFactory.newAircraft("jetplane", "test", 1, 1, 1);
 
         when(weatherTower.getWeather(any())).thenReturn("FOG");
         jetPlane.registerTower(weatherTower);
@@ -127,7 +126,7 @@ public class JetPlaneWeatherMovementsTests {
     @Test
     public void testSnowDialog() {
 
-        Flyable jetPlane = AircraftFactory.newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable jetPlane = AircraftFactory.newAircraft("jetplane", "test", 1, 1, 1);
 
         when(weatherTower.getWeather(any())).thenReturn("SNOW");
         jetPlane.registerTower(weatherTower);

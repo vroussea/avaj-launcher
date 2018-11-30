@@ -32,7 +32,7 @@ public class AircraftFactoryTests {
     @Test(expected = IllegalCoordinatesException.class)
     public void testWrongLatitude() {
         newAircraft(
-                "jetPlane",
+                "jetplane",
                 "test",
                 1,
                 -1,
@@ -85,7 +85,7 @@ public class AircraftFactoryTests {
     @Test
     public void testJetPlaneIsCreated() {
         Flyable aircraft = newAircraft(
-                "jetPlane",
+                "jetplane",
                 "test",
                 1,
                 1,
@@ -96,7 +96,7 @@ public class AircraftFactoryTests {
     @Test
     public void testJetPlaneToString() {
         Flyable aircraft = newAircraft(
-                "jetPlane",
+                "jetplane",
                 "test",
                 1,
                 1,

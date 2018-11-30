@@ -3,7 +3,6 @@ package tower;
 import exception.AlreadyRegisteredObserverException;
 import exception.NotRegisteredObserverException;
 import flyable.Flyable;
-import flyable.JetPlane;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +42,7 @@ public class WeatherTowerTests {
 
     @Test
     public void testRegisterFlyable() {
-        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetplane", "test", 1, 1, 1);
 
         tower.register(flyable);
         assertEquals(tower.getObservers().size(), 1);
@@ -51,9 +50,9 @@ public class WeatherTowerTests {
 
     @Test
     public void testRegisterMultipleFlyable() {
-        Flyable flyable1 = newAircraft("jetPlane", "test", 1, 1, 1);
-        Flyable flyable2 = newAircraft("jetPlane", "test", 1, 1, 1);
-        Flyable flyable3 = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable1 = newAircraft("jetplane", "test", 1, 1, 1);
+        Flyable flyable2 = newAircraft("jetplane", "test", 1, 1, 1);
+        Flyable flyable3 = newAircraft("jetplane", "test", 1, 1, 1);
 
         tower.register(flyable1);
         tower.register(flyable2);
@@ -63,7 +62,7 @@ public class WeatherTowerTests {
 
     @Test
     public void testUnregisterFlyable() {
-        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetplane", "test", 1, 1, 1);
 
         tower.register(flyable);
         tower.unregister(flyable);
@@ -72,15 +71,15 @@ public class WeatherTowerTests {
 
     @Test(expected = NotRegisteredObserverException.class)
     public void testUnregisterWhenNoFlyable() {
-        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetplane", "test", 1, 1, 1);
 
         tower.unregister(flyable);
     }
 
     @Test(expected = NotRegisteredObserverException.class)
     public void testUnregisterWrongFlyable() {
-        Flyable flyable1 = newAircraft("jetPlane", "test", 1, 1, 1);
-        Flyable flyable2 = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable1 = newAircraft("jetplane", "test", 1, 1, 1);
+        Flyable flyable2 = newAircraft("jetplane", "test", 1, 1, 1);
 
         tower.register(flyable1);
         tower.unregister(flyable2);
@@ -88,7 +87,7 @@ public class WeatherTowerTests {
 
     @Test(expected = AlreadyRegisteredObserverException.class)
     public void testRegisterFlyableAlreadyRegistered() {
-        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetplane", "test", 1, 1, 1);
 
         tower.register(flyable);
         tower.register(flyable);
@@ -107,7 +106,7 @@ public class WeatherTowerTests {
 
     @Test
     public void testLandingJetPlane() {
-        Flyable flyable = newAircraft("jetPlane", "test", 1, 1, 1);
+        Flyable flyable = newAircraft("jetplane", "test", 1, 1, 1);
 
         tower.register(flyable);
         tower.changeWeather();

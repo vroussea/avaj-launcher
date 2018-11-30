@@ -10,14 +10,14 @@ public class AircraftFactory {
             case "helicopter":
                 return newHelicopter(name, longitude, latitude, height);
 
-            case "jetPlane":
+            case "jetplane":
                 return newJetPlane(name, longitude, latitude, height);
 
             case "baloon":
                 return newBaloon(name, longitude, latitude, height);
 
             default:
-                throw new IllegalTypeArgumentException();
+                throw new IllegalTypeArgumentException(type);
         }
     }
 

@@ -1,12 +1,9 @@
 package tower;
 
 import exception.AlreadyRegisteredObserverException;
-import exception.NoWeatherTowerSpecifiedException;
 import exception.NotRegisteredObserverException;
 import flyable.Flyable;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Tower {
@@ -30,7 +27,7 @@ public class Tower {
         }
     }
 
-    public CopyOnWriteArrayList<Flyable> getObservers() {
-        return (CopyOnWriteArrayList<Flyable>) observers.clone();
+    CopyOnWriteArrayList<Flyable> getObservers() {
+        return observers;
     }
 }
